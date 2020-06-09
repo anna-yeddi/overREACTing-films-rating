@@ -8,7 +8,7 @@ function Stars(props) {
   return (
     <>
       <span className="sr-only">{count} Start Rating</span>
-      <ul className="card-body-stars u-clearfix" stars={count}>
+      <ul className="card-body-stars u-clearfix">
         {count >= 1 && count <= 5 && Array(count).fill(<Star />)}
       </ul>
     </>
