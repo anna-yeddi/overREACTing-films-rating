@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Star from './Star'
 
-function Stars(props) {
-  const count = props.count
+function Stars({ count }) {
+  // Update the page's title:
+  useEffect(() => {
+    document.title = `${count}* Film Ratings React Component`
+  })
 
   return (
     <>
       <p className="sr-only">{count + ' Star Rating'}</p>
       <ul className="card-body-stars u-clearfix">
-        {count >= 1 && count <= 5 && Array(count).fill(<Star />)}
+        {count >= 1 &&
+          count <= 5 &&
+          Array.from({ length: count }, (_, i) => <Star key={i} />)}
       </ul>
     </>
   )
@@ -17,13 +22,11 @@ function Stars(props) {
 
 // Set default value:
 Stars.defaultProps = {
-  props: { count: 0 },
+  count: 0,
 }
 
 Stars.propTypes = {
-  props: PropTypes.shape({
-    count: PropTypes.number,
-  }),
+  count: PropTypes.number,
 }
 
 export default Stars
