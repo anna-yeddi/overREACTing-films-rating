@@ -8,13 +8,14 @@ function Stars({ count }) {
     document.title = `${count}* Film Ratings React Component`
   })
 
+  // Check for number of stars
+  const isValid = count >= 1 && count <= 5
+
   return (
     <>
       <p className="sr-only">{count + ' Star Rating'}</p>
       <ul className="card-body-stars u-clearfix">
-        {count >= 1 &&
-          count <= 5 &&
-          Array.from({ length: count }, (_, i) => <Star key={i} />)}
+        {isValid && Array.from({ length: count }, (_, i) => <Star key={i} />)}
       </ul>
     </>
   )
